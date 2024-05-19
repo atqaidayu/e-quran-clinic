@@ -1,10 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LearnerController;
 
 
 
-Route::get('/viewlogin', function () {
+
+Route::get('viewlogin', function () {
     // Logic for displaying the login form
     return view('login'); // Assuming you have a Blade view named 'login.blade.php'
 })->name('viewlogin');
@@ -17,7 +19,10 @@ Route::get('/viewlogin', function () {
 
 
 // Route for submitting the login form
-Route::post('login', [AdminController::class, 'login']);
+Route::post('loginAdmin', [AdminController::class, 'login'])->name('loginAdmin');
+
+// Route for submitting the login form
+Route::post('loginLearner', [LearnerController::class, 'login'])->name('loginLearner');
 
 // Route for logging out
 Route::post('logout', [AdminController::class, 'logout'])->name('logout');

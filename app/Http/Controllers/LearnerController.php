@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Learner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLearnerRequest;
@@ -15,6 +19,32 @@ class LearnerController extends Controller
     public function index()
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        
+        // Validate fields
+        $attrs = $request->validate([
+            'phone_num' => 'required',
+            'password' => 'required|min:8'
+        ]);
+
+        // Attempt login
+        if (!Auth::guard('learner')->attempt($attrs)) {
+            return response([
+                'message' => 'Invalid credentials.'
+            ], 403);
+        }
+
+      
+        // Return user & token in response
+        $learner = Auth::guard('learner')->user();
+        \Log::info('Received container data: ' . $learner);
+        return response([
+            'learner' => $learner,
+            'token' => $learner->createToken('secret')->plainTextToken
+        ], 200);
     }
 
     /**

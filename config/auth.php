@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
+        'learner' => [
+            'driver' => 'session',
+            'provider' => 'learner',
+        ],
     ],
 
     /*
@@ -64,6 +68,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
             'email' => 'email', // Add this line to specify 'username' as the username field
+        ],
+        'learner' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Learner::class,
+            'phone_num' => 'phone_num',
         ],
     ],
     
@@ -90,6 +99,12 @@ return [
     'passwords' => [
         'admin' => [ // Change the password broker to 'staff'
             'provider' => 'admin', // Change the provider to 'staff'
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'learner' => [
+            'provider' => 'learner',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
