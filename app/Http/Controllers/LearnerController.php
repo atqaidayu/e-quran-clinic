@@ -47,6 +47,43 @@ class LearnerController extends Controller
         ], 200);
     }
 
+      // refresh token
+      public function refreshToken(Request $request)
+      {
+          try {
+              // Retrieve the token from the request headers
+              $token = $request->header('phone_num');
+  
+              \Log::info('Received container data: ' . $token);
+  
+              if (!$token) {
+                  return response()->json(['error' => 'Token not provided'], 401);
+              }
+  
+              // Authenticate the user using the provided token
+              $learner = Learner::where('phone_num', $token)->first();
+  
+              if (!$learner) {
+                  return response()->json(['error' => 'Invalid phone num'], 401);
+              }
+  
+              // Generate a new token based on the user's email
+              $newToken = $learner->createToken($learner->phone_num)->plainTextToken;
+  
+              return response()->json(['token' => $newToken], 200);
+          } catch (\Exception $e) {
+              return response()->json(['error' => $e->getMessage()], 500);
+          }
+      }
+
+      public function learner()
+      {
+          return response([
+              'learners' => [auth()->learner()]
+          ], 200);
+      }
+  
+
     /**
      * Show the form for creating a new resource.
      */

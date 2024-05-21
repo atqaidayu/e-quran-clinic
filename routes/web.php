@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LearnerController;
+use App\Http\Controllers\TutorController;
 
 
 
@@ -20,9 +21,15 @@ Route::get('viewlogin', function () {
 
 // Route for submitting the login form
 Route::post('loginAdmin', [AdminController::class, 'login'])->name('loginAdmin');
-
-// Route for submitting the login form
 Route::post('loginLearner', [LearnerController::class, 'login'])->name('loginLearner');
+Route::post('loginTutor', [TutorController::class, 'login'])->name('loginTutor');
+
+
+// Refresh Token
+Route::put('refreshTokenAdmin', [AdminController::class, 'refreshToken'])->name('refreshTokenAdmin');
+Route::put('refreshTokenLearner', [LearnerController::class, 'refreshToken'])->name('refreshTokenLearner');
+Route::put('refreshTokenTutor', [TutorController::class, 'refreshToken'])->name('refreshTokenAdminTutor');
+
 
 // Route for logging out
 Route::post('logout', [AdminController::class, 'logout'])->name('logout');

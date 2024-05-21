@@ -13,6 +13,8 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        
+
         // Create an admin record
         Admin::create([
             'name' => 'Atiqa Idayu',

@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'learner',
         ],
+        'tutor' => [
+            'driver' => 'session',
+            'provider' => 'tutor',
+        ],
     ],
 
     /*
@@ -74,7 +78,13 @@ return [
             'model' => App\Models\Learner::class,
             'phone_num' => 'phone_num',
         ],
+        'tutor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tutor::class,
+            'phone_num' => 'phone_num',
+        ],
     ],
+
     
 
     /*
@@ -105,6 +115,12 @@ return [
         ],
         'learner' => [
             'provider' => 'learner',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'tutor' => [
+            'provider' => 'tutor',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,

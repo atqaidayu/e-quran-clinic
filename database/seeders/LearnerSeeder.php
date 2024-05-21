@@ -32,7 +32,7 @@ class LearnerSeeder extends Seeder
             'gender' => 'Male',
             'age' => 30,
             'phone_num' => '0123456789',
-            'password' => bcrypt('abc123'), // You should hash the password
+            'password' => bcrypt('abc12345'), // You should hash the password
             'proficiency_level' => 'Advanced',
             'created_at' => now(),
             'updated_at' => now(),

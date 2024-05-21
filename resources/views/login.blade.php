@@ -95,7 +95,7 @@
                 email: email,
                 password: password
             };
-            fetch('{{ route('login') }}', {
+            fetch('{{ route('loginAdmin') }}', {
                 method: 'POST', // Use the POST method
                 headers: {
                     'Content-Type': 'application/json', // Set the content type to JSON
