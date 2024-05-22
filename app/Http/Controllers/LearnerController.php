@@ -40,7 +40,7 @@ class LearnerController extends Controller
             'gender' => $attrs['gender'],
             'age' => $attrs['age'],
             'phone_num' => $attrs['phone_num'],
-            'password' => $attrs['password'],
+            'password' => bcrypt($attrs['password']),
             'proficiency_level' => $attrs['proficiency_level'],
         ]);
 
