@@ -40,6 +40,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+// Route to register a learner
+Route::post('registerLearner', [LearnerController::class, 'registerLearner'])->name('Learner.add');
 
 // Route for 404 page
 Route::view('/404', 'errors.404')->name('404');

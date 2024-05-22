@@ -21,6 +21,35 @@ class LearnerController extends Controller
         //
     }
 
+    public function registerLearner(Request $request)
+    {
+        // Validate fields, including custom binary validation rule
+        $attrs = $request->validate([
+            'name' => 'required|string',
+            'gender' => 'required|string',
+            'age' => 'required|integer',
+            'phone_num' => 'required|string',
+            'password' => 'required|string',
+            'proficiency_level' => 'required|string',
+            
+        ]);
+
+        // Create user
+        $learner = Learner::create([
+            'name' => $attrs['name'],
+            'gender' => $attrs['gender'],
+            'age' => $attrs['age'],
+            'phone_num' => $attrs['phone_num'],
+            'password' => $attrs['password'],
+            'proficiency_level' => $attrs['proficiency_level'],
+        ]);
+
+        // Return user & token in response
+        return response([
+            'learner' => $learner
+        ], 200);
+    }
+
     public function login(Request $request)
     {
         
