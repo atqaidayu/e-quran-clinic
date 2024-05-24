@@ -22,6 +22,9 @@ return new class extends Migration
             $table->integer('age');
             $table->string('gender');
             $table->string('document');
+            $table->string('status');
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->cascadeOnUpdate()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

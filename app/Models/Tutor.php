@@ -27,6 +27,7 @@ class Tutor extends Authenticatable implements AuthenticatableContract
         'password',
         'profile_picture',
         'document',
+        'status',
        
     ];
 

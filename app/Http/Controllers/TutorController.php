@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
 use App\Models\Tutor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTutorRequest;
@@ -21,9 +19,44 @@ class TutorController extends Controller
         //
     }
 
+    public function registerTutor(Request $request)
+    {
+        // Validate fields, including custom binary validation rule
+        $attrs = $request->validate([
+            'name' => 'required|string',
+            'about' => 'required|string',
+            'phone_num' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'profile_picture' => 'required|string',
+            'age' => 'required|int',
+            'gender' => 'required|string',
+            'document' => 'required|string',
+            'status' => 'required|string',
+        ]);
+
+        // Create user
+        $tutor = Tutor::create([
+            'name' => $attrs['name'],
+            'about' => $attrs['about'],
+            'phone_num' => $attrs['phone_num'],
+            'email' => $attrs['email'],
+            'password' => bcrypt($attrs['password']),
+            'profile_picture' => $attrs['profile_picture'],
+            'age' => $attrs['age'],
+            'gender' => $attrs['gender'],
+            'document' => $attrs['document'],
+            'status' => $attrs['status'],
+        ]);
+
+        // Return user in response
+        return response([
+            'tutor' => $tutor
+        ], 200);
+    }
+
     public function login(Request $request)
     {
-        
         // Validate fields
         $attrs = $request->validate([
             'phone_num' => 'required',
@@ -37,10 +70,20 @@ class TutorController extends Controller
             ], 403);
         }
 
-      
-        // Return user & token in response
+        // Retrieve the authenticated tutor
         $tutor = Auth::guard('tutor')->user();
-        \Log::info('Received container data: ' . $tutor);
+
+        // Check if the tutor's status is active
+        if ($tutor->status !== 'active') {
+            return response([
+                'message' => 'Account is not active.'
+            ], 403);
+        }
+
+        // Log tutor data
+        \Log::info('Received tutor data: ', $tutor->toArray());
+
+        // Return user & token in response
         return response([
             'tutor' => $tutor,
             'token' => $tutor->createToken('secret')->plainTextToken
@@ -66,9 +109,13 @@ class TutorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tutor $tutor)
+    public function show_tutor(Tutor $tutor)
     {
-        //
+        $tutors = Tutor::all();
+        
+        // Pass the tutors to the view
+        return view('tutor-management', compact('tutors'));
+       
     }
 
     /**

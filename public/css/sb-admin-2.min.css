@@ -1790,19 +1790,19 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #858796
+    color: #08080a
 }
 
 .table td,
 .table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #e3e6f0
+    border-top: 1px solid #000000
 }
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #e3e6f0
+    border-bottom: 2px solid #000000
 }
 
 .table tbody+tbody {
@@ -1815,12 +1815,12 @@ pre code {
 }
 
 .table-bordered {
-    border: 1px solid #e3e6f0
+    border: 1px solid #0d0d0e
 }
 
 .table-bordered td,
 .table-bordered th {
-    border: 1px solid #e3e6f0
+    border: 1px solid #080808
 }
 
 .table-bordered thead td,
@@ -1840,7 +1840,7 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-    color: #858796;
+    color: #ffffff;
     background-color: rgba(0, 0, 0, .075)
 }
 

@@ -14,7 +14,6 @@ class LearnerSeeder extends Seeder
     {
         // First set of data
         DB::table('learners')->insert([
-            'tutor_id' => null,
             'name' => 'Auni Afeeqah',
             'gender' => 'Female',
             'age' => 25,
@@ -27,7 +26,6 @@ class LearnerSeeder extends Seeder
 
         // Second set of data
         DB::table('learners')->insert([
-            'tutor_id' => null,
             'name' => 'Muhd Asyraf',
             'gender' => 'Male',
             'age' => 30,
