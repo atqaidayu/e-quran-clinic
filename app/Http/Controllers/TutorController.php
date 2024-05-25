@@ -118,6 +118,15 @@ class TutorController extends Controller
        
     }
 
+    public function remove_tutor($id)
+    {
+        $tutor = Tutor::find($id);
+        $tutor->delete();
+
+        return redirect()->back();
+       
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
