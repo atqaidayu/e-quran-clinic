@@ -127,6 +127,14 @@ class TutorController extends Controller
        
     }
 
+    public function update_tutor($id)
+    {
+        $tutor = Tutor::find($id);
+       // return view('update-tutor', compact('tutor'));
+       return view('updatetutor', compact('tutor'));
+       
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

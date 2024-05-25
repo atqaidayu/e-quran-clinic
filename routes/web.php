@@ -40,9 +40,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/updatetutor', function () {
+    return view('updatetutor');
+})->name('updatetutor');
+
 // Route for Tutor Management
 Route::get('/tutorManagement', [TutorController::class, 'show_tutor'])->name('tutorManagement');
 Route::get('/remove-tutor/{id}', [TutorController::class, 'remove_tutor'])->name('remove-tutor');
+Route::get('/update-tutor/{id}', [TutorController::class, 'update_tutor'])->name('update-tutor');
+//Route::get('/updatetutor/{id}', [TutorController::class, 'update_tutor'])->name('updatetutor');
+
 
 // Route to register 
 Route::post('registerLearner', [LearnerController::class, 'registerLearner'])->name('Learner.add');

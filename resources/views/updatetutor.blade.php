@@ -9,14 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tutor Management</title>
+    <title>Admin Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -360,73 +359,64 @@
 
                 </nav>
                 <!-- End of Topbar -->
+ <!-- Page Heading -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                     <!-- Basic Card Example -->
+                     <div class="m-5 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Update Tutor</h6>
+                                </div>
+                                <div class="card-body">
+                                <form>
+  <div class="m-5 form-group">
+    <label for="formGroupExampleInput">Name</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
+  </div>
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Tutor Management</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+  <div class="m-5 form-group">
+    <label for="formGroupExampleInput">About</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="About">
+  </div>
+
+  <div class="m-5 form-group">
+    <label for="formGroupExampleInput">Age</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Age">
+  </div>
+
+  <div class="m-5 form-group">
+    <label for="formGroupExampleInput">Gender</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Gender">
+  </div>
+
+  <div class="m-5 form-group">
+    <label for="formGroupExampleInput">Status</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Status">
+  </div>
+
+
+</form>
+                                </div>
+                            </div>
+
+                        </div>
+               
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; eQuranClinic 2024</span>
                     </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
-            
-
-                    <div class="row">
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Status</th>
-                        <th>Update</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-            
-                <tbody>
-                    @foreach($tutors as $tutor)
-                    <tr>
-                        <td>{{$tutor->name}}</td>
-                        <td>{{$tutor->age}}</td>
-                        <td>{{$tutor->gender}}</td>
-                        <td>{{$tutor->status}}</td>
-                        <td>   <a href="{{url('update-tutor',$tutor->id)}}" class="btn btn-warning btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </span>
-                                        <span class="text">Update</span>
-                                    </a></td>
-                        <td>   <a href="{{url('remove-tutor',$tutor->id)}}" class="btn btn-danger btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text">Remove</span>
-                                    </a></td>
-                    </tr>
-                    @endforeach
-                    
-                </tbody>
-            </table>
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-</div>
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
