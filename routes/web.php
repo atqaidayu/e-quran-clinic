@@ -18,6 +18,10 @@ Route::get('viewlogin', function () {
 //     Route::post('{id}', [AdminController::class, 'UserData']);
 // }
 
+Route::get('/updatetutorpage', function () {
+    return view('updatetutor');
+})->name('updatetutorpage');
+
 
 // Route for submitting the login form
 Route::post('loginAdmin', [AdminController::class, 'login'])->name('loginAdmin');
@@ -40,16 +44,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/updatetutor', function () {
-    return view('updatetutor');
-})->name('updatetutor');
-
 // Route for Tutor Management
 Route::get('/tutorManagement', [TutorController::class, 'show_tutor'])->name('tutorManagement');
 Route::get('/remove-tutor/{id}', [TutorController::class, 'remove_tutor'])->name('remove-tutor');
-Route::get('/update-tutor/{id}', [TutorController::class, 'update_tutor'])->name('update-tutor');
-//Route::get('/updatetutor/{id}', [TutorController::class, 'update_tutor'])->name('updatetutor');
+Route::get('/updatetutor/{id}', [TutorController::class, 'update_tutor2'])->name('updatetutor');
 
+Route::post('/edit-tutor/{id}', [TutorController::class, 'edit_tutor'])->name('edit-tutor');
 
 // Route to register 
 Route::post('registerLearner', [LearnerController::class, 'registerLearner'])->name('Learner.add');

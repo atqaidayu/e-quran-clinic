@@ -401,7 +401,7 @@
                         <td>{{$tutor->age}}</td>
                         <td>{{$tutor->gender}}</td>
                         <td>{{$tutor->status}}</td>
-                        <td>   <a href="{{url('update-tutor',$tutor->id)}}" class="btn btn-warning btn-icon-split">
+                        <td>   <a href="{{url('updatetutor',$tutor->id)}}" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="bi bi-pencil-square"></i>
                                         </span>

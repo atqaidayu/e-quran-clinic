@@ -130,8 +130,31 @@ class TutorController extends Controller
     public function update_tutor($id)
     {
         $tutor = Tutor::find($id);
-       // return view('update-tutor', compact('tutor'));
-       return view('updatetutor', compact('tutor'));
+    
+        return view('updatetutor', compact('tutor'));
+       
+    }
+
+    public function update_tutor2($id)
+    {
+        $tutor = Tutor::find($id);
+    
+        return view('updatetutor', compact('tutor'));
+       
+    }
+
+    public function edit_tutor(Request $request, $id)
+    {
+        $tutor = Tutor::find($id);
+     
+        $tutor->name = $request->name;
+        $tutor->about = $request->about;
+        $tutor->age = $request->age;
+        $tutor->gender = $request->gender;
+        $tutor->status = $request->status;
+
+        $tutor->save();
+        return redirect()->back();
        
     }
 

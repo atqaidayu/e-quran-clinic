@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -367,34 +367,39 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update Tutor</h6>
                                 </div>
                                 <div class="card-body">
-                                <form>
-  <div class="m-5 form-group">
-    <label for="formGroupExampleInput">Name</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
-  </div>
+                                <form action="{{route('edit-tutor', $tutor->id) }}"  method="POST" enctype="multipart/form-data">
+                                
+                                @csrf
+                               
+                               
+    <div class="m-5 form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{$tutor->name}}">
+    </div>
 
-  <div class="m-5 form-group">
-    <label for="formGroupExampleInput">About</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="About">
-  </div>
+    <div class="m-5 form-group">
+        <label for="about">About</label>
+        <input type="text" class="form-control" id="about" name="about" placeholder="About" value="{{$tutor->about}}">
+    </div>
 
-  <div class="m-5 form-group">
-    <label for="formGroupExampleInput">Age</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Age">
-  </div>
+    <div class="m-5 form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" name="age" placeholder="Age" value="{{$tutor->age}}">
+    </div>
 
-  <div class="m-5 form-group">
-    <label for="formGroupExampleInput">Gender</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Gender">
-  </div>
+    <div class="m-5 form-group">
+        <label for="gender">Gender</label>
+        <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender" value="{{$tutor->gender}}">
+    </div>
 
-  <div class="m-5 form-group">
-    <label for="formGroupExampleInput">Status</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Status">
-  </div>
+    <div class="m-5 form-group">
+        <label for="status">Status</label>
+        <input type="text" class="form-control" id="status" name="status" placeholder="Status" value="{{$tutor->status}}">
+    </div>
 
-
+    <button type="submit" class="m-6 btn btn-primary btn-user btn-block">Update</button>
 </form>
+
                                 </div>
                             </div>
 
